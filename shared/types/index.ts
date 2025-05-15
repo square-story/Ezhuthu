@@ -14,7 +14,7 @@ export interface ISnippet{
   code: string;
   language: string;
   tags: string[];
-  author: string;
+  author: string | IUser;
   createdAt: Date;
   updatedAt: Date;
 }

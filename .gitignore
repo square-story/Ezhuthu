@@ -1,0 +1,4 @@
+/node_modules
+*.env
+backend/.env.production
+frontend/README.md

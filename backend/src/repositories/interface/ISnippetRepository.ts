@@ -5,7 +5,7 @@ export interface ISnippetRepository {
     findByTitle(title: string): Promise<ISnippetModel | null>;
     findByLanguage(language: string): Promise<ISnippetModel | null>;
     findByTags(tags: string[]): Promise<ISnippetModel | null>;
-    findByAuthor(author: string): Promise<ISnippetModel | null>;
+    findByAuthor(author: string): Promise<ISnippetModel[]>;
     deleteSnippet(id: string): Promise<ISnippetModel | null>;
     updateSnippet(id: string, snippet: ISnippetModel): Promise<ISnippetModel | null>;
     getAllSnippets(): Promise<ISnippetModel[]>;

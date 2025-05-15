@@ -57,8 +57,17 @@ export abstract class BaseRepository<T extends Document> {
         return this.model.deleteOne(filter);
     }
 
-    async find(filter: FilterQuery<T>): Promise<T[]> {
-        return this.model.find(filter);
+    async find(filter: FilterQuery<T>, populate?: string[]): Promise<T[]> {
+        let query = this.model.find(filter);
+
+
+        if (populate && populate.length > 0) {
+            populate.forEach(field => {
+                query = query.populate(field);
+            });
+        }
+
+        return await query.exec();
     }
 
     async findOne(filter: FilterQuery<T>, populate?: string[]): Promise<T | null> {

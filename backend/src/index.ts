@@ -6,6 +6,7 @@ import cors from "cors";
 import { authRouter } from "./routers/auth.router";
 import { notFoundHandler } from "./middlewares/not-found.middleware";
 import { errorHandler } from "./middlewares/error.middlware";
+import snippetRouter from "./routers/snippet.router";
 
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth",authRouter);
+app.use("/api/snippets",snippetRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

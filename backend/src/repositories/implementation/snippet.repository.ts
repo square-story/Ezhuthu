@@ -44,9 +44,9 @@ export class SnippetRepository extends BaseRepository<ISnippetModel> implements 
         }
     }
 
-    async findByAuthor(author: string): Promise<ISnippetModel | null> {
+    async findByAuthor(author: string): Promise<ISnippetModel[]> {
         try {
-            return await this.findOne({author},['author'])
+            return await this.find({author},['author'])
         } catch (error) {
             console.error(error);
             throw new Error("Error finding snippet by author");

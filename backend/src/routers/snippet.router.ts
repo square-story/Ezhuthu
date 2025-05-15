@@ -6,7 +6,7 @@ import { Router } from "express";
 const snippetRouter = Router();
 const SnippetController = container.get<ISnippetController>(DI_TYPES.SnippetController);
 
-snippetRouter.get("/", SnippetController.getSnippetsByUserId);
+snippetRouter.get("/:userId", SnippetController.getSnippetsByUserId);
 snippetRouter.get("/:snippetId", SnippetController.getSnippetById);
 snippetRouter.post("/", SnippetController.postSnippetByUserId);
 snippetRouter.put("/:snippetId", SnippetController.updateSnippetById);

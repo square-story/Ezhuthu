@@ -20,8 +20,17 @@ export abstract class BaseRepository<T extends Document> {
         return this.model.findByIdAndUpdate(id, update, { upsert: true, new: true });
     }
 
-    async findAll(): Promise<T[]> {
-        return this.model.find()
+    async findAll(populate?: string[]): Promise<T[]> {
+        let query = this.model.find()
+
+        // Apply population if specified
+        if (populate && populate.length > 0) {
+            populate.forEach(field => {
+                query = query.populate(field);
+            });
+        }
+
+        return await query.exec();
     }
 
     async create(data: Partial<T>): Promise<T> {
@@ -52,8 +61,17 @@ export abstract class BaseRepository<T extends Document> {
         return this.model.find(filter);
     }
 
-    async findOne(filter: FilterQuery<T>): Promise<T | null> {
-        return this.model.findOne(filter);
+    async findOne(filter: FilterQuery<T>, populate?: string[]): Promise<T | null> {
+        let query = this.model.findOne(filter);
+
+        // Apply population if specified
+        if (populate && populate.length > 0) {
+            populate.forEach(field => {
+                query = query.populate(field);
+            });
+        }
+
+        return await query.exec();
     }
 
     async findByUsernameOrEmail(value: string): Promise<T | null> {

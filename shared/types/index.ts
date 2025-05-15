@@ -1,5 +1,3 @@
-import { Types } from "mongoose";
-
 export interface IUser {
   _id: string;
   name: string;
@@ -16,7 +14,7 @@ export interface ISnippet{
   code: string;
   language: string;
   tags: string[];
-  author: Types.ObjectId;
+  author: string;
   createdAt: Date;
   updatedAt: Date;
 }

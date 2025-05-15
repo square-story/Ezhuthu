@@ -13,7 +13,6 @@ const snippetSchema = new Schema<ISnippetModel>({
     },
     description: {
         type: String,
-        required: true,
         trim: true,
     },
     code: {
@@ -28,7 +27,6 @@ const snippetSchema = new Schema<ISnippetModel>({
     },
     tags: {
         type: [String],
-        required: true,
         trim: true,
     },
     author:{

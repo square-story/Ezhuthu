@@ -10,7 +10,7 @@ export class SnippetController implements ISnippetController {
         @inject(DI_TYPES.SnippetService) private _snippetService: ISnippetService
     ){}
 
-    async getSnippetById(req: Request, res: Response, next: NextFunction): Promise<void> {
+    getSnippetById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             const snippet = await this._snippetService.getSnippetById(req.params.snippetId);
             res.status(200).json(snippet);
@@ -19,7 +19,7 @@ export class SnippetController implements ISnippetController {
         }
     }
 
-    async getSnippetsByUserId(req: Request, res: Response, next: NextFunction): Promise<void> {
+    getSnippetsByUserId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             const snippets = await this._snippetService.getSnippetsByUserId(req.params.userId);
             res.status(200).json(snippets);
@@ -28,7 +28,7 @@ export class SnippetController implements ISnippetController {
         }
     }
 
-    async postSnippetByUserId(req: Request, res: Response, next: NextFunction): Promise<void> {
+    postSnippetByUserId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             const snippet = await this._snippetService.postSnippetByUserId(req.body);
             res.status(201).json(snippet);
@@ -37,7 +37,7 @@ export class SnippetController implements ISnippetController {
         }
     }
 
-    async updateSnippetById(req: Request, res: Response, next: NextFunction): Promise<void> {
+    updateSnippetById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             const snippet = await this._snippetService.updateSnippetById(req.params.snippetId, req.body);
             res.status(200).json(snippet);
@@ -46,7 +46,7 @@ export class SnippetController implements ISnippetController {
         }
     }
 
-    async deleteSnippetById(req: Request, res: Response, next: NextFunction): Promise<void> {
+    deleteSnippetById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
         try {
             const snippet = await this._snippetService.deleteSnippetById(req.params.snippetId);
             res.status(200).json(snippet);
